@@ -1,0 +1,32 @@
+sudo -i -u postgres
+createdb bix
+psql -d bix
+\dt
+
+
+CREATE TABLE DM_Categoria (
+id_categoria serial PRIMARY KEY,
+categoria varchar (200) NOT NULL 
+);
+
+CREATE TABLE DM_Funcionarios( 
+id_funcionario serial PRIMARY KEY,
+funcionario varchar (265) NOT NULL 
+);
+
+CREATE TABLE DM_Data( 
+id_data serial PRIMARY KEY,
+data varchar (50) NOT NULL 
+);
+
+
+CREATE TABLE FT_Vendas( 
+id_vendas serial PRIMARY KEY,
+vendas float NOT NULL,
+id_categoria int NOT NULL,
+id_funcionario int NOT NULL,
+id_data int NOT NULL,
+FOREIGN KEY (idDM_categoria) REFERENCES DM_Categoria (id_categoria)
+FOREIGN KEY (idDM_funcionario) REFERENCES DM_Funcionarios (id_funcionario)
+FOREIGN KEY (idDM_data) REFERENCES DM_Data(id_data)
+);

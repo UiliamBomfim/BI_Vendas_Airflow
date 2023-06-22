@@ -55,7 +55,7 @@ with DAG(dag_id='vendas',
         task_id='TRUNCATE_CATEGORIA',
         postgres_conn_id='postgres_default',
         sql=r"""
-            TRUNCATE TABLE DM_Categoria cascade;
+            TRUNCATE TABLE DM_Categoria RESTART IDENTITY cascade;
         """,
         dag=dag,
         )
